@@ -7,7 +7,7 @@ class GeolocationsController < ActionController::API
   end
 
   def create
-    myip = params[:ip]
+    myip = params[:data][:ip]
     access_api_key = '662b1b3c5e4dce05f038a9f8019b295c'
 
     uri = URI("http://api.ipstack.com/#{myip}?access_key=#{access_api_key}")

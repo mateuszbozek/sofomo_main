@@ -1,5 +1,4 @@
 class Geolocation < ApplicationRecord
-  
   before_destroy :destroy_languages
 
   has_one :location, dependent: :delete
@@ -8,6 +7,6 @@ class Geolocation < ApplicationRecord
   private
 
   def destroy_languages
-    location&.languages.destroy_all if location&.languages&.present? 
+    location.languages.destroy_all if location&.languages&.present? 
   end
 end

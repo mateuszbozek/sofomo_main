@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root to: 'alive#index'
 
   get 'geolocations/index', to: 'geolocations#index'
-  get 'geolocations/create', to: 'geolocations#create'
+  post 'geolocations/create', to: 'geolocations#create'
   delete 'geolocations/destroy/:id', to: 'geolocations#destroy'
 
   # Defines the root path route ("/")
