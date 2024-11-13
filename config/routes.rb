@@ -6,7 +6,9 @@ Rails.application.routes.draw do
 
   root to: 'alive#index'
 
-  get "up" => "rails/health#show", as: :rails_health_check
+  get 'geolocations/index', to: 'geolocations#index'
+  get 'geolocations/create', to: 'geolocations#create'
+  get 'geolocations/destroy', to: 'geolocations#destroy'
 
   # Defines the root path route ("/")
   # root "posts#index"

@@ -11,7 +11,9 @@ default: &default
 
 development:
   <<: *default
-  database: storage/development.sqlite3
+  # database: storage/development.sqlite3
+  # database: somofo
+  database: somofo_3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
