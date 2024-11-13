@@ -12,11 +12,11 @@ class CreateGeolocations < ActiveRecord::Migration[7.2]
       t.string :region_name
       t.string :city
       t.string :zip
-      t.string :latitude
-      t.string :longitude
+      t.float :latitude
+      t.float :longitude
       t.string :msa
       t.string :dma
-      t.string :radius
+      t.float :radius
       t.string :ip_routing_type
       t.string :connection_type
     end

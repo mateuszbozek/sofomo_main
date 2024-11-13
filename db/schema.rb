@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_13_095428) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_13_124958) do
   create_table "geolocations", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -24,12 +24,39 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_13_095428) do
     t.string "region_name"
     t.string "city"
     t.string "zip"
-    t.string "latitude"
-    t.string "longitude"
+    t.float "latitude"
+    t.float "longitude"
     t.string "msa"
     t.string "dma"
-    t.string "radius"
+    t.float "radius"
     t.string "ip_routing_type"
     t.string "connection_type"
   end
+
+  create_table "languages", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.string "native"
+    t.integer "location_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["location_id"], name: "index_languages_on_location_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.bigint "geoname_id"
+    t.string "capital"
+    t.string "country_flag"
+    t.string "country_flag_emoji"
+    t.string "country_flag_emoji_unicode"
+    t.string "calling_code"
+    t.boolean "is_eu"
+    t.integer "geolocation_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["geolocation_id"], name: "index_locations_on_geolocation_id"
+  end
+
+  add_foreign_key "languages", "locations"
+  add_foreign_key "locations", "geolocations"
 end
