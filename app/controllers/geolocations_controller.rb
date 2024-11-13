@@ -3,6 +3,7 @@ class GeolocationsController < ActionController::API
 
   def index
     geolocations = Geolocation.all
+    byebug
     output = { 'geoLocations / index' => 'Is alive!' }.to_json
     render json: output
   end
@@ -25,7 +26,11 @@ class GeolocationsController < ActionController::API
   end
 
   def destroy
-    output = { 'geoLocations / destroy' => 'Is alive!' }.to_json
-    render json: output
+    geolocation = Geolocation.find(params[:id])
+    if geolocation.destroy
+      render json: { 'message': 'Geolocation has been deleted.'}
+    else
+      render json: { 'message': geolocation.error }
+    end
   end
 end
