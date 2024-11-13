@@ -5,7 +5,6 @@ class SaveGeolocationService
 
   def call
     create_geolocation
-    byebug
   end
 
   private
