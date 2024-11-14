@@ -8,7 +8,6 @@ class GeolocationsController < ActionController::API
 
   def create
     myip = params[:data][:ip]
-
     uri = URI("http://api.ipstack.com/#{myip}?access_key=#{ENV['ipstack_key']}")
     res = Net::HTTP.get(uri)
     response = SaveGeolocationService.new(JSON.parse(res)).call
