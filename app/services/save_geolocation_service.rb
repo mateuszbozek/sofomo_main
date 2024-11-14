@@ -7,12 +7,9 @@ class SaveGeolocationService
     ActiveRecord::Base.transaction do
       geolocation = find_or_create_geolocation
       location = find_or_create_location(geolocation)
-      new_languages = set_languages(new_location)
-      new_languages&.each do |language|
-        language.save
-      end
-      { 'message': 'Geolocation has been saved.'}
+      find_or_create_languages(location)
     end
+    { 'message': 'Geolocation has been saved.'}
   rescue StandardError => e
      { error: e.class, message: e.message }
   end
@@ -53,18 +50,16 @@ class SaveGeolocationService
                                            geolocation_id: geolocation.id )
   end
 
-  def set_languages(location)
+  def find_or_create_languages(location)
     temp_languages = @geolocation_json["location"]["languages"]
     languages = []
     temp_languages&.each do |language|
-        languages << Language.new( code: language["code"],
+        Language.find_or_create_by( code: language["code"],
                                  name: language["name"],
                                  native: language["native"],
                                  location_id: location.id )
         
     end
-
-    languages
   end
 
 end
