@@ -36,11 +36,18 @@ RSpec.describe SaveGeolocationService, type: :service do
              "is_eu"=>true}
       } }
 
-      it 'request save geolocation' do
+      it 'save geolocation with parameters' do
         service = described_class.new(response)
         resp_service = service.call
         expect(resp_service).to be_an_instance_of(Hash)
         expect(resp_service[:message]).to eq("Geolocation has been saved.")
+      end
+
+      it 'return message if parameters are nil' do
+        service = described_class.new(nil)
+        resp_service = service.call
+        expect(resp_service).to be_an_instance_of(Hash)
+        expect(resp_service[:message]).to eq("Parameters from request are empty.")
       end
     end
 end

@@ -4,6 +4,8 @@ class SaveGeolocationService
   end
 
   def call
+    return { 'message': 'Parameters from request are empty.'} if @geolocation_json.nil?
+
     ActiveRecord::Base.transaction do
       geolocation = find_or_create_geolocation
       location = find_or_create_location(geolocation)
