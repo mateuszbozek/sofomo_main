@@ -4,6 +4,8 @@ class Geolocation < ApplicationRecord
   has_one :location, dependent: :delete
   has_many :languages, through: :location
 
+  validates :ip, uniqueness: true, presence: true
+
   private
 
   def destroy_languages
