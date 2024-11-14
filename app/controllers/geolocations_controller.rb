@@ -2,8 +2,8 @@ class GeolocationsController < ActionController::API
   require 'net/http'
 
   def index
-    geolocations = Geolocation.all
-    render json: geolocations.to_json
+    geolocations = Geolocation.all.to_json
+    render json: geolocations
   end
 
   def create

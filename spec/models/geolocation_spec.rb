@@ -33,16 +33,15 @@ RSpec.describe Geolocation, type: :model do
       end
 
     context 'when ip is taken' do
-        before do
-          geolocation.save
-        end
-
-        it 'new record is invalid' do
-          geolocation_2 = geolocation.dup
-          expect(geolocation_2).not_to be_valid
-        end
+      before do
+        geolocation.save
       end
 
+      it 'new record is invalid' do
+        geolocation_2 = geolocation.dup
+        expect(geolocation_2).not_to be_valid
+      end
+    end
   end
 
 end
