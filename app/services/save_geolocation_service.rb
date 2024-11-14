@@ -52,7 +52,6 @@ class SaveGeolocationService
 
   def find_or_create_languages(location)
     temp_languages = @geolocation_json["location"]["languages"]
-    languages = []
     temp_languages&.each do |language|
         Language.find_or_create_by( code: language["code"],
                                  name: language["name"],
