@@ -85,6 +85,10 @@ GEM
     crass (1.0.6)
     date (3.4.0)
     diff-lcs (1.5.1)
+    dotenv (3.1.4)
+    dotenv-rails (3.1.4)
+      dotenv (= 3.1.4)
+      railties (>= 6.1)
     drb (2.2.1)
     erubi (1.13.0)
     globalid (1.2.1)
@@ -241,6 +245,7 @@ DEPENDENCIES
   bootsnap
   brakeman
   byebug
+  dotenv-rails
   ipstack
   puma (>= 5.0)
   rails (~> 7.2.1)
